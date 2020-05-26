@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  direccionEntregaPedido: MyString
+  cantidadProductos: 1
+  usuario: one
+  producto: one
+  estado: one
+
+two:
+  direccionEntregaPedido: MyString
+  cantidadProductos: 1
+  usuario: two
+  producto: two
+  estado: two

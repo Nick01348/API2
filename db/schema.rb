@@ -10,12 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_26_230238) do
+ActiveRecord::Schema.define(version: 2020_05_26_230447) do
 
   create_table "estados", force: :cascade do |t|
     t.string "estadoPedido"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "favoritos", force: :cascade do |t|
+    t.integer "usuario_id", null: false
+    t.integer "producto_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["producto_id"], name: "index_favoritos_on_producto_id"
+    t.index ["usuario_id"], name: "index_favoritos_on_usuario_id"
   end
 
   create_table "productos", force: :cascade do |t|
@@ -46,5 +55,7 @@ ActiveRecord::Schema.define(version: 2020_05_26_230238) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "favoritos", "productos"
+  add_foreign_key "favoritos", "usuarios"
   add_foreign_key "productos", "seccions"
 end
