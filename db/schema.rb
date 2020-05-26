@@ -10,12 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_26_224956) do
+ActiveRecord::Schema.define(version: 2020_05_26_230238) do
 
   create_table "estados", force: :cascade do |t|
     t.string "estadoPedido"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "productos", force: :cascade do |t|
+    t.string "nombreProducto"
+    t.float "precio"
+    t.text "descripcion"
+    t.integer "seccion_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["seccion_id"], name: "index_productos_on_seccion_id"
   end
 
   create_table "seccions", force: :cascade do |t|
@@ -24,4 +34,17 @@ ActiveRecord::Schema.define(version: 2020_05_26_224956) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "usuarios", force: :cascade do |t|
+    t.string "nombreUsuario"
+    t.string "contraseñaUsuario"
+    t.string "nombre"
+    t.string "apellido"
+    t.date "fechaNacimiento"
+    t.integer "telefono"
+    t.string "email"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "productos", "seccions"
 end
