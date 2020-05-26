@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_26_224730) do
+ActiveRecord::Schema.define(version: 2020_05_26_224956) do
 
   create_table "estados", force: :cascade do |t|
     t.string "estadoPedido"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "seccions", force: :cascade do |t|
+    t.string "seccionProducto"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
