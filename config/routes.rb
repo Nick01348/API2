@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :productos
   resources :usuarios
   resources :seccions
   resources :estados
