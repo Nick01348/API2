@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_26_230447) do
+ActiveRecord::Schema.define(version: 2020_05_26_230759) do
 
   create_table "estados", force: :cascade do |t|
     t.string "estadoPedido"
@@ -25,6 +25,19 @@ ActiveRecord::Schema.define(version: 2020_05_26_230447) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["producto_id"], name: "index_favoritos_on_producto_id"
     t.index ["usuario_id"], name: "index_favoritos_on_usuario_id"
+  end
+
+  create_table "pedidos", force: :cascade do |t|
+    t.string "direccionEntregaPedido"
+    t.integer "cantidadProductos"
+    t.integer "usuario_id", null: false
+    t.integer "producto_id", null: false
+    t.integer "estado_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["estado_id"], name: "index_pedidos_on_estado_id"
+    t.index ["producto_id"], name: "index_pedidos_on_producto_id"
+    t.index ["usuario_id"], name: "index_pedidos_on_usuario_id"
   end
 
   create_table "productos", force: :cascade do |t|
@@ -57,5 +70,8 @@ ActiveRecord::Schema.define(version: 2020_05_26_230447) do
 
   add_foreign_key "favoritos", "productos"
   add_foreign_key "favoritos", "usuarios"
+  add_foreign_key "pedidos", "estados"
+  add_foreign_key "pedidos", "productos"
+  add_foreign_key "pedidos", "usuarios"
   add_foreign_key "productos", "seccions"
 end

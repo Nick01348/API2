@@ -5,7 +5,7 @@ class SeccionsController < ApplicationController
   def index
     @seccions = Seccion.all
 
-    render json: @seccions
+    render json: @seccions.to_json(only: [:seccionProducto])
   end
 
   # GET /seccions/1

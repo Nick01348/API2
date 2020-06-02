@@ -5,7 +5,7 @@ class UsuariosController < ApplicationController
   def index
     @usuarios = Usuario.all
 
-    render json: @usuarios
+    render json: @usuarios.to_json(only: [:nombreUsuario, :nombre, :apellido, :fechaNacimiento, :telefono, :email])
   end
 
   # GET /usuarios/1

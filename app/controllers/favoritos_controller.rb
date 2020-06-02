@@ -5,7 +5,7 @@ class FavoritosController < ApplicationController
   def index
     @favoritos = Favorito.all
 
-    render json: @favoritos
+    render json: @favoritos.to_json(only: [:usuario_id, :producto_id])
   end
 
   # GET /favoritos/1

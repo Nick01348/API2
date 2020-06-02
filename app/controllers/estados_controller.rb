@@ -5,7 +5,7 @@ class EstadosController < ApplicationController
   def index
     @estados = Estado.all
 
-    render json: @estados
+    render json: @estados.to_json(only: [:estadoPedido])
   end
 
   # GET /estados/1
