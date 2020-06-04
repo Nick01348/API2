@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :pedidos
   resources :favoritos
   resources :productos
+  get "productos/seccion/:seccion_id" => 'productos#seccion'
   resources :usuarios
   resources :seccions
   resources :estados
