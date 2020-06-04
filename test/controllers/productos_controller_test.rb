@@ -24,7 +24,7 @@ class ProductosControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update producto" do
-    patch producto_url(@producto), params: { producto: { descripcion: @producto.descripcion, nombreProducto: @producto.nombreProducto, precio: @producto.precio, seccion_id: @producto.seccion_id } }, as: :json
+    patch producto_url(@producto), params: { producto: { descripcion: @producto.descripcion, nombreProducto: @producto.nombreProducto, precio: @producto.precio, imagenProducto: @producto.imagenProducto, seccion_id: @producto.seccion_id } }, as: :json
     assert_response 200
   end
 
