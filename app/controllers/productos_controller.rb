@@ -1,4 +1,5 @@
 class ProductosController < ApplicationController
+  before_action :set_produSeccion, only: [:seccion]
   before_action :set_producto, only: [:show, :update, :destroy]
 
   # GET /productos
@@ -13,6 +14,10 @@ class ProductosController < ApplicationController
     render json: @producto.to_json(only: [:nombreProducto, :precio, :descripcion, :seccion_id])
   end
 
+  def seccion
+    render json: @produSeccion
+  end
+  
   # POST /productos
   def create
     @producto = Producto.new(producto_params)
@@ -44,8 +49,12 @@ class ProductosController < ApplicationController
       @producto = Producto.find(params[:id])
     end
 
+    def set_produSeccion
+      @produSeccion = Producto.where(seccion_id: params[:seccion_id])
+    end
+
     # Only allow a trusted parameter "white list" through.
     def producto_params
-      params.require(:producto).permit(:nombreProducto, :precio, :descripcion, :seccion_id)
+      params.require(:producto).permit(:nombreProducto, :precio, :descripcion, :imagen, :seccion_id)
     end
 end

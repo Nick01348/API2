@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_26_230759) do
+
 
   create_table "estados", force: :cascade do |t|
     t.string "estadoPedido"
@@ -25,6 +25,16 @@ ActiveRecord::Schema.define(version: 2020_05_26_230759) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["producto_id"], name: "index_favoritos_on_producto_id"
     t.index ["usuario_id"], name: "index_favoritos_on_usuario_id"
+  end
+
+  create_table "nusuarios", force: :cascade do |t|
+    t.string "nombre"
+    t.string "apellido"
+    t.string "email"
+    t.string "password"
+    t.date "fechaNacimiento"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "pedidos", force: :cascade do |t|
@@ -47,6 +57,7 @@ ActiveRecord::Schema.define(version: 2020_05_26_230759) do
     t.integer "seccion_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "imagen"
     t.index ["seccion_id"], name: "index_productos_on_seccion_id"
   end
 
@@ -56,17 +67,7 @@ ActiveRecord::Schema.define(version: 2020_05_26_230759) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "usuarios", force: :cascade do |t|
-    t.string "nombreUsuario"
-    t.string "contraseñaUsuario"
-    t.string "nombre"
-    t.string "apellido"
-    t.date "fechaNacimiento"
-    t.integer "telefono"
-    t.string "email"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
+
 
   add_foreign_key "favoritos", "productos"
   add_foreign_key "favoritos", "usuarios"
@@ -74,4 +75,4 @@ ActiveRecord::Schema.define(version: 2020_05_26_230759) do
   add_foreign_key "pedidos", "productos"
   add_foreign_key "pedidos", "usuarios"
   add_foreign_key "productos", "seccions"
-end
+
